@@ -13,6 +13,10 @@ sleep targets, and view statistics regarding sleep patterns and trends.
 sleep, which lead to illness or discomfort. So I want to have an application that can record human's sleep to help them 
 understand and improve their sleep.
 
+## User Stories
 
-
-需要多个User stories
+- As a user, I want to record my sleep.
+- As a user, I want to see stats and averages.
+- As a user, I want to record my sleep satisfaction for each sleep and view the list.
+- As a user, I want to set goals for my sleep as well as sleep reminders.
+- As a user, I want to record different types of sleep (e.g. naps, snoozes) and categorize them.

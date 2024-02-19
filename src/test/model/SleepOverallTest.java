@@ -163,8 +163,8 @@ class SleepOverallTest {
     @Test
     public void testGetAftNum() {
         sleepOverall.addSleep(sleep1);
-        sleepOverall.addSleep(sleep2);
         sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep2);
         assertEquals(1,sleepOverall.getAftNum());
     }
 

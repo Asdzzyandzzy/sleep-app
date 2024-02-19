@@ -37,6 +37,7 @@ public class Sleep {
         return this.score;
     }
 
+    //EFFECTS: get type
     public String getType() {
         return this.type;
     }

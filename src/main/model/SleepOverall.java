@@ -58,10 +58,13 @@ public class SleepOverall {
     }
 
 
+    //REQUIRES: num < list.size
+    //EFFECTS: return the sleep that index is num
     public Sleep returnSleep(int num) {
         return sleepList.get(num);
     }
 
+    //EFFECTS: get the num of nap in the list
     public int getNapNum() {
         int nap = 0;
         for (int i = 0; i < getNumber(); i++) {
@@ -72,6 +75,7 @@ public class SleepOverall {
         return nap;
     }
 
+    //EFFECTS: get the num of overnight sleep in the list
     public int getOverNum() {
         int over = 0;
         for (int i = 0; i < getNumber(); i++) {
@@ -82,6 +86,7 @@ public class SleepOverall {
         return over;
     }
 
+    //EFFECTS: get the num of afternoon sleep in the list
     public int getAftNum() {
         int aft = 0;
         for (int i = 0; i < getNumber(); i++) {

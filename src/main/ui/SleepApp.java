@@ -37,6 +37,8 @@ public class SleepApp {
         goal = new Goals(-1,-1);
     }
 
+    //MODIFIES: this
+    //EFFECTS: print the welcome sentence; user can use q to quit
     private void welcomeWord() {
         String s;
         System.out.println("Welcome to sleep app");
@@ -51,6 +53,7 @@ public class SleepApp {
         }
     }
 
+    //EFFECTS: show the basic screen
     private void showScreen() {
         System.out.println("___________________________________________________________");
         System.out.println("Record sleep: press r");
@@ -64,6 +67,7 @@ public class SleepApp {
         System.out.println("Type:");
     }
 
+    //EFFECTS: run method to record a sleep
     private void record() {
         int t;
         Date d;
@@ -81,6 +85,7 @@ public class SleepApp {
         toContinue();
     }
 
+    //EFFECTS: create a time for sleep
     private int typeTime() {
         int t;
 
@@ -95,6 +100,7 @@ public class SleepApp {
         return t;
     }
 
+    //EFFECTS: create a score for sleep
     private int typeScore() {
         int score;
 
@@ -111,6 +117,7 @@ public class SleepApp {
         return score;
     }
 
+    //EFFECTS: create a type for sleep
     private String chooseType() {
         String s;
         System.out.println("choose Type of your sleep:");
@@ -135,6 +142,7 @@ public class SleepApp {
         return "overnight Sleep";
     }
 
+    //EFFECTS: create a date for sleep
     private Date createDate() {
         int y;
         int m;
@@ -153,6 +161,7 @@ public class SleepApp {
         return new Date(y,m,d);
     }
 
+    //EFFECTS: show a list of all the sleep
     private void seeAll() {
         int num;
 
@@ -160,8 +169,7 @@ public class SleepApp {
         System.out.println("You have " + num + " sleep has been recorded");
 
         for (int i = 0; i < num; i++) {
-            Sleep s;
-            s = sleepOverall.returnSleep(i);
+            Sleep s = sleepOverall.returnSleep(i);
             System.out.print("Sleep " + (i + 1) + " " + s.getDate().getYear() + "/" + s.getDate().getMonth() + "/");
             System.out.print(s.getDate().getDay() + " | " + " Hour: " + s.getTime() + " | " + " Score: ");
             System.out.print(s.getScore() + " | " + " Type: " + s.getType() + " | ");
@@ -169,8 +177,9 @@ public class SleepApp {
                 if (s.getType().equals("overnight Sleep")) {
                     if (s.reachGoal(goal)) {
                         System.out.println(" Reach Goal!!!");
+                    } else {
+                        System.out.println(" Didn't Reach Goal :(");
                     }
-                    System.out.println(" Didn't Reach Goal :(");
                 } else {
                     System.out.println(" Goal is not for " + s.getType());
                 }
@@ -181,6 +190,8 @@ public class SleepApp {
         toContinue();
     }
 
+    //MODIFIES: this
+    //EFFECTS: set Goal
     private void goal() {
         int score;
         int time;
@@ -197,6 +208,7 @@ public class SleepApp {
         toContinue();
     }
 
+    //EFFECTS: show the goal
     private void seeGoal() {
         System.out.println("________________________________________________");
         System.out.println("Your goal:");
@@ -205,6 +217,7 @@ public class SleepApp {
         toContinue();
     }
 
+    //EFFECTS: show the stat for the sleep
     private void stat() {
         System.out.println("________________________________________________");
         System.out.println("Your average for last 7 sleep: ");
@@ -216,22 +229,29 @@ public class SleepApp {
         System.out.println("Average score is " + sleepOverall.getLastMonth().calculateTime());
     }
 
+    //EFFECTS: show the category data for the sleep
     private void categorize() {
         int total = sleepOverall.getNumber();
         int nap = sleepOverall.getNapNum();
         int aft = sleepOverall.getAftNum();
         int over = sleepOverall.getOverNum();
+        double nt = ((double) nap / total);
+        double at = ((double) aft / total);
+        double ot = ((double) over / total);
         System.out.println("________________________________________________");
         System.out.println("You have sleep " + total + " times");
-        System.out.println("Nap: " + nap + " (" + (nap / total) + "%)");
-        System.out.println("Nap: " + aft + " (" + (aft / total) + "%)");
-        System.out.println("Nap: " + over + " (" + (over / total) + "%)");
+        System.out.println("Nap: " + nap + " (" +  String.format("%.2f", nt) + "%)");
+        System.out.println("Nap: " + aft + " (" +  String.format("%.2f", at) + "%)");
+        System.out.println("Nap: " + over + " (" +  String.format("%.2f", ot) + "%)");
+        toContinue();
     }
 
+    //EFFECTS: restart the app
     private void restart() {
         runSleep();
     }
 
+    //EFFECTS: to check user type in and run right method
     private void chooseThings(String s) {
 
         if (s.equals("r")) {
@@ -263,6 +283,7 @@ public class SleepApp {
         }
     }
 
+    //EFFECTS: read reader type to ready to choose things
     private void chooseThing() {
         String s;
         input = new Scanner(System.in);
@@ -274,6 +295,7 @@ public class SleepApp {
         }
     }
 
+    //EFFECTS: give a time to users that they can read information
     private void toContinue() {
         String s;
         System.out.println("Press c to continue:");

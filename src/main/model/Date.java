@@ -21,14 +21,17 @@ public class Date {
         this.day = day;
     }
 
+    //EFFECTS: get year
     public int getYear() {
         return this.year;
     }
 
+    //EFFECTS: get month
     public int getMonth() {
         return this.month;
     }
 
+    //EFFECTS: get day
     public int getDay() {
         return this.day;
     }

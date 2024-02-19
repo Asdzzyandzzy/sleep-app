@@ -19,10 +19,13 @@ public class Average {
         this.averageList.add(sleep);
     }
 
+    //EFFECTS: get the size of the list
     public int getNum() {
         return this.averageList.size();
     }
 
+    //Requires: list is not empty
+    //EFFECTS: calculate the average hours people sleep in each sleep
     public int calculateTime() {
         int time = 0;
         for (int i = 0; i < getNum(); i++) {
@@ -31,6 +34,8 @@ public class Average {
         return time / getNum();
     }
 
+    //Requires: list is not empty
+    //EFFECTS: calculate the average score in each sleep
     public int calculateScore() {
         int score = 0;
         for (int i = 0; i < getNum(); i++) {

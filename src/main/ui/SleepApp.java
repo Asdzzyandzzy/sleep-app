@@ -60,6 +60,7 @@ public class SleepApp {
         System.out.println("See the Goal: press t");
         System.out.println("See the categorize summarize: press c");
         System.out.println("Clear all the data and restart: press R");
+        System.out.println("Quit: press q");
         System.out.println("Type:");
     }
 
@@ -161,19 +162,21 @@ public class SleepApp {
         for (int i = 0; i < num; i++) {
             Sleep s;
             s = sleepOverall.returnSleep(i);
-            System.out.print("Sleep " + (i + 1) + " " + s.getDate().getYear() + "/");
-            System.out.print(s.getDate().getMonth() + "/" + s.getDate().getDay() + " | ");
-            System.out.print(" Hour: " + s.getTime() + " | " + " Score: " + s.getScore() + " | ");
-            System.out.print(" Type: " + s.getType() + " | ");
+            System.out.print("Sleep " + (i + 1) + " " + s.getDate().getYear() + "/" + s.getDate().getMonth() + "/");
+            System.out.print(s.getDate().getDay() + " | " + " Hour: " + s.getTime() + " | " + " Score: ");
+            System.out.print(s.getScore() + " | " + " Type: " + s.getType() + " | ");
             if (goal.getScore() != -1) {
-                if (s.reachGoal(goal)) {
-                    System.out.print(" Reach Goal!!!");
+                if (s.getType().equals("overnight Sleep")) {
+                    if (s.reachGoal(goal)) {
+                        System.out.println(" Reach Goal!!!");
+                    }
+                    System.out.println(" Didn't Reach Goal :(");
+                } else {
+                    System.out.println(" Goal is not for " + s.getType());
                 }
-                System.out.println(" Didn't Reach Goal :(");
             } else {
-                System.out.print(" No Goals");
+                System.out.println(" No Goals");
             }
-            System.out.println(" ");
         }
         toContinue();
     }
@@ -182,7 +185,7 @@ public class SleepApp {
         int score;
         int time;
         System.out.println("________________________________________________");
-        System.out.println("Please type the hours you want to sleep(0-24): ");
+        System.out.println("Please type the hours you want to sleep(overnight)(0-24): ");
         input = new Scanner(System.in);
         time = input.nextInt();
 
@@ -195,19 +198,38 @@ public class SleepApp {
     }
 
     private void seeGoal() {
-
+        System.out.println("________________________________________________");
+        System.out.println("Your goal:");
+        System.out.println("Hours for a overnight sleep: " + goal.getTime());
+        System.out.println("Score for a overnight sleep: " + goal.getScore());
+        toContinue();
     }
 
     private void stat() {
-
+        System.out.println("________________________________________________");
+        System.out.println("Your average for last 7 sleep: ");
+        System.out.println("Average hours is " + sleepOverall.getLastSeven().calculateTime());
+        System.out.println("Average score is " + sleepOverall.getLastSeven().calculateTime());
+        System.out.println(" ");
+        System.out.println("Your average for last 7 sleep: ");
+        System.out.println("Average hours is " + sleepOverall.getLastMonth().calculateTime());
+        System.out.println("Average score is " + sleepOverall.getLastMonth().calculateTime());
     }
 
     private void categorize() {
-
+        int total = sleepOverall.getNumber();
+        int nap = sleepOverall.getNapNum();
+        int aft = sleepOverall.getAftNum();
+        int over = sleepOverall.getOverNum();
+        System.out.println("________________________________________________");
+        System.out.println("You have sleep " + total + " times");
+        System.out.println("Nap: " + nap + " (" + (nap / total) + "%)");
+        System.out.println("Nap: " + aft + " (" + (aft / total) + "%)");
+        System.out.println("Nap: " + over + " (" + (over / total) + "%)");
     }
 
     private void restart() {
-
+        runSleep();
     }
 
     private void chooseThings(String s) {
@@ -246,6 +268,10 @@ public class SleepApp {
         input = new Scanner(System.in);
         s = input.next();
         chooseThings(s);
+        if (s.equals("q")) {
+            keepGoing = false;
+            System.out.println("The app is quit!");
+        }
     }
 
     private void toContinue() {

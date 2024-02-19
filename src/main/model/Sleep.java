@@ -21,13 +21,6 @@ public class Sleep {
         this.type = type;
     }
 
-    //EFFECTS: return true if reach the goals; return false if did not;
-    public boolean isReachGoals(Goals goal) {
-        if ((goal.getTime() == this.time) && (goal.getScore() == this.score)) {
-            return true;
-        }
-        return false;
-    }
 
     //EFFECTS: return time of sleep
     public int getTime() {
@@ -48,6 +41,7 @@ public class Sleep {
         return this.type;
     }
 
+    //EFFECTS: return true if reach the goals; return false if did not;
     public Boolean reachGoal(Goals g) {
         if ((this.time >= g.getTime()) && (this.score >= g.getScore())) {
             return true;

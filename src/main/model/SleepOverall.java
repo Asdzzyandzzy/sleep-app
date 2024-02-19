@@ -31,9 +31,9 @@ public class SleepOverall {
     }
 
     //EFFECTS: return the last seven days of sleep; and if days<7, return whatever we have;
-    public AverageWeek getLastSeven() {
-        AverageWeek list;
-        list = new AverageWeek();
+    public Average getLastSeven() {
+        Average list;
+        list = new Average();
         for (int i = getNumber() - 1; i >= getNumber() - 8; i--) {
             list.addSleep(this.sleepList.get(i));
             if (i == 0) {
@@ -45,9 +45,9 @@ public class SleepOverall {
 
 
     //EFFECTS: return the last seven days of sleep; and if days<30, return whatever we have;
-    public AverageWeek getLastMonth() {
-        AverageWeek list;
-        list = new AverageWeek();
+    public Average getLastMonth() {
+        Average list;
+        list = new Average();
         for (int i = getNumber() - 1; i >= getNumber() - 31; i--) {
             list.addSleep(this.sleepList.get(i));
             if (i == 0) {
@@ -62,5 +62,33 @@ public class SleepOverall {
         return sleepList.get(num);
     }
 
+    public int getNapNum() {
+        int nap = 0;
+        for (int i = 0; i < getNumber(); i++) {
+            if (sleepList.get(i).getType().equals("Nap")) {
+                nap++;
+            }
+        }
+        return nap;
+    }
 
+    public int getOverNum() {
+        int over = 0;
+        for (int i = 0; i < getNumber(); i++) {
+            if (sleepList.get(i).getType().equals("overnight Sleep")) {
+                over++;
+            }
+        }
+        return over;
+    }
+
+    public int getAftNum() {
+        int aft = 0;
+        for (int i = 0; i < getNumber(); i++) {
+            if (sleepList.get(i).getType().equals("Afternoon Sleep")) {
+                aft++;
+            }
+        }
+        return aft;
+    }
 }

@@ -60,6 +60,17 @@ class SleepOverallTest {
     }
 
     @Test
+    public void testReturnSleep() {
+        sleepOverall.addSleep(sleep1);
+        sleepOverall.addSleep(sleep2);
+        sleepOverall.addSleep(sleep3);
+        assertEquals(sleep,sleepOverall.returnSleep(0));
+        assertEquals(sleep1,sleepOverall.returnSleep(1));
+        assertEquals(sleep2,sleepOverall.returnSleep(2));
+        assertEquals(sleep3,sleepOverall.returnSleep(3));
+    }
+
+    @Test
     public void testGetLastSeven() {
         Average lastSeven = sleepOverall.getLastSeven();
         assertEquals(1, lastSeven.getNum());
@@ -72,6 +83,22 @@ class SleepOverallTest {
         sleepOverall.addSleep(sleep3);
         lastSeven = sleepOverall.getLastSeven();
         assertEquals(4, lastSeven.getNum());
+
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+
+        lastSeven = sleepOverall.getLastSeven();
+        assertEquals(7,lastSeven.getNum());
+
+
     }
 
     @Test
@@ -87,6 +114,42 @@ class SleepOverallTest {
         sleepOverall.addSleep(sleep3);
         lastMonth = sleepOverall.getLastMonth();
         assertEquals(4, lastMonth.getNum());
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        sleepOverall.addSleep(sleep3);
+        lastMonth = sleepOverall.getLastMonth();
+        assertEquals(30,lastMonth.getNum());
     }
 
     @Test

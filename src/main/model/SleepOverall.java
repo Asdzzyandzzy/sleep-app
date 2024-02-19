@@ -34,7 +34,7 @@ public class SleepOverall {
     public Average getLastSeven() {
         Average list;
         list = new Average();
-        for (int i = getNumber() - 1; i >= getNumber() - 8; i--) {
+        for (int i = getNumber() - 1; i > getNumber() - 8; i--) {
             list.addSleep(this.sleepList.get(i));
             if (i == 0) {
                 return list;
@@ -48,7 +48,7 @@ public class SleepOverall {
     public Average getLastMonth() {
         Average list;
         list = new Average();
-        for (int i = getNumber() - 1; i >= getNumber() - 31; i--) {
+        for (int i = getNumber() - 1; i > getNumber() - 31; i--) {
             list.addSleep(this.sleepList.get(i));
             if (i == 0) {
                 return list;

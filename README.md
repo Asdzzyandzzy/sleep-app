@@ -15,8 +15,10 @@ understand and improve their sleep.
 
 ## User Stories
 
-- As a user, I want to record my sleep. *(sleep is X and list of sleep is Y, add sleep to list of sleep)*
-- As a user, I want to see stats and averages. *(user can view the list of weekly and monthly stats)*
+- As a user, I want to record my sleep. *(sleep is X and sleep overall is Y, add sleep to sleep overall)*
+- As a user, I want to see stats and averages. *(user can view the list of last 7 or 30 sleep stats)*
 - As a user, I want to record my sleep satisfaction for each sleep and view the list.
-- As a user, I want to set goals for my sleep.
-- As a user, I want to record different types of sleep (e.g. naps, snoozes) and categorize them.
+- As a user, I want to set goals for my sleep. *(sleep is X and goals is Y, part of X is Y)*
+- As a user, I want to record different types of sleep (e.g. naps, snoozes) and categorize them. 
+*(sleep is X, categorize sleep is Y, Y use part of X to calculate)*
+- As a user, I want to clear all the data and restart the app

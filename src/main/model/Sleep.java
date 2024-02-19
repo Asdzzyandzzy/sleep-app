@@ -48,4 +48,11 @@ public class Sleep {
         return this.type;
     }
 
+    public Boolean reachGoal(Goals g) {
+        if ((this.time >= g.getTime()) && (this.score >= g.getScore())) {
+            return true;
+        }
+        return false;
+    }
+
 }

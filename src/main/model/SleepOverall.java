@@ -58,6 +58,9 @@ public class SleepOverall {
     }
 
 
+    public Sleep returnSleep(int num) {
+        return sleepList.get(num);
+    }
 
 
 }

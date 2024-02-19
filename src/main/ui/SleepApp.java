@@ -19,7 +19,7 @@ public class SleepApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: progress the user input
+    //EFFECTS: progress the user input.
     private void runSleep() {
         startSet();
         welcomeWord();

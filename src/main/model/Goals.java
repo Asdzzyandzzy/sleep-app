@@ -1,6 +1,9 @@
 package model;
 
-public class Goals {
+import org.json.JSONObject;
+import persistence.Alljasons;
+
+public class Goals implements Alljasons {
     //the Goals of the sleep
 
     private int time;
@@ -22,6 +25,14 @@ public class Goals {
     //EFFECTS: return score;
     public int getScore() {
         return this.score;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("goal_time", this.time);
+        json.put("goal_score", this.score);
+        return json;
     }
 
 }

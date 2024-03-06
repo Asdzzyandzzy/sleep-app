@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Alljasons;
+import persistence.WriteJason;
+
 import java.util.ArrayList;
 
-public class Sleep {
+public class Sleep implements Alljasons {
     // a single sleep with a time, date, satisfied score and type.
 
     private int time;
@@ -48,6 +52,17 @@ public class Sleep {
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("sleep_time", this.time);
+        json.put("sleep_date", this.date.toJson());
+        json.put("sleep_score", this.score);
+        json.put("sleep_type", this.type);
+        return json;
     }
 
 }

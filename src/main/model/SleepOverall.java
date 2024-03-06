@@ -1,8 +1,13 @@
 package model;
 
+import persistence.Alljasons;
+
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 
-public class SleepOverall {
+public class SleepOverall implements Alljasons {
     //the list of Sleeps
 
     private ArrayList<Sleep> sleepList;
@@ -95,5 +100,18 @@ public class SleepOverall {
             }
         }
         return aft;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        JSONArray sleepArray = new JSONArray();
+
+        for (Sleep sleep : sleepList) {
+            sleepArray.put(sleep.toJson());
+        }
+
+        json.put("sleeps", sleepArray);
+        return json;
     }
 }

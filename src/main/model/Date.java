@@ -1,6 +1,14 @@
 package model;
 
-public class Date {
+import persistence.Alljasons;
+import persistence.*;
+
+
+import org.json.JSONObject;
+import persistence.Alljasons;
+import persistence.WriteJason;
+
+public class Date implements Alljasons {
     // The date of the sleep
 
     private int year;
@@ -34,5 +42,14 @@ public class Date {
     //EFFECTS: get day
     public int getDay() {
         return this.day;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("year",this.year);
+        json.put("month",this.month);
+        json.put("day",this.day);
+        return json;
     }
 }

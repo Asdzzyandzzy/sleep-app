@@ -1,12 +1,22 @@
 package ui;
 
 import model.*;
+import persistence.ReadJason;
+import persistence.WriteJason;
 
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
 public class SleepApp {
+
+    //Jason files
+    private static final String jasonPath = "./data/Sleep.json";
+    private WriteJason jsonWriter;
+    private ReadJason jsonReader;
+
+
 
     private SleepOverall sleepOverall;
     private Goals goal;
@@ -14,7 +24,9 @@ public class SleepApp {
     private boolean keepGoing = true;
 
     //EFFECTS: run the sleep app;
-    public SleepApp() {
+    public SleepApp() throws FileNotFoundException {
+        jsonWriter = new WriteJason(jasonPath);
+     //   jsonReader = new ReadJason(jasonPath);
         runSleep();
     }
 
@@ -63,6 +75,7 @@ public class SleepApp {
         System.out.println("See the Goal: press t");
         System.out.println("See the categorize summarize: press c");
         System.out.println("Clear all the data and restart: press R");
+        System.out.println("save current data: press save");
         System.out.println("Quit: press q");
         System.out.println("Type:");
     }
@@ -281,6 +294,14 @@ public class SleepApp {
         if (s.equals("R")) {
             restart();
         }
+
+    }
+
+    //EFFECTS: choose things
+    private void chooseThingss(String s) {
+        if (s.equals("save")) {
+            savefiles();
+        }
     }
 
     //EFFECTS: read reader type to ready to choose things
@@ -289,6 +310,7 @@ public class SleepApp {
         input = new Scanner(System.in);
         s = input.next();
         chooseThings(s);
+        chooseThingss(s);
         if (s.equals("q")) {
             keepGoing = false;
             System.out.println("The app is quit!");
@@ -303,6 +325,18 @@ public class SleepApp {
         s = input.next();
         if (!s.equals("c")) {
             System.out.println("Don't want continue? No way.");
+        }
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void savefiles() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(sleepOverall,goal);
+            jsonWriter.close();
+            System.out.println("Saved " + "files" + " to " + jasonPath);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + jasonPath);
         }
     }
 }

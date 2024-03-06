@@ -235,9 +235,9 @@ public class SleepApp {
         int nap = sleepOverall.getNapNum();
         int aft = sleepOverall.getAftNum();
         int over = sleepOverall.getOverNum();
-        double nt = ((double) nap / total);
-        double at = ((double) aft / total);
-        double ot = ((double) over / total);
+        double nt = ((double) nap / total) * 100;
+        double at = ((double) aft / total) * 100;
+        double ot = ((double) over / total) * 100;
         System.out.println("________________________________________________");
         System.out.println("You have sleep " + total + " times");
         System.out.println("Nap: " + nap + " (" +  String.format("%.2f", nt) + "%)");

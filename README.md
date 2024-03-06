@@ -21,3 +21,5 @@ understand and improve their sleep.
 - As a user, I want to set goals for my sleep. 
 - As a user, I want to record different types of sleep (e.g. naps, snoozes) and categorize them.
 - As a user, I want to clear all the data and restart the app
+- As a user, I want to be able to save all my sleep and goals (if we choose).
+- As a user, I want to be able to reload files (if we choose).

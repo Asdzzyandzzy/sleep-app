@@ -226,9 +226,13 @@ public class SleepApp {
     //EFFECTS: show the goal
     private void seeGoal() {
         System.out.println("________________________________________________");
-        System.out.println("Your goal:");
-        System.out.println("Hours for a overnight sleep: " + goal.getTime());
-        System.out.println("Score for a overnight sleep: " + goal.getScore());
+        if ((goal.getScore() < 0) | (goal.getTime() < 0)) {
+            System.out.println("You haven't set goals");
+        } else {
+            System.out.println("Your goal:");
+            System.out.println("Hours for a overnight sleep: " + goal.getTime());
+            System.out.println("Score for a overnight sleep: " + goal.getScore());
+        }
         toContinue();
     }
 

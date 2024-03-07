@@ -22,7 +22,7 @@ public class ReadJason {
         this.source = source;
     }
 
-
+    // MODIFIES: sleepoverall
     //EFFECTS: Reads the SleepOverall data from the JSON file
     public SleepOverall readSleepOverall() throws IOException {
         String jsonData = readFile(source);
@@ -30,6 +30,7 @@ public class ReadJason {
         return parseSleepOverall(jsonObject.getJSONObject("sleepOverall"));
     }
 
+    // MODIFIES: goal
     //EFFECTS: Reads the Goals data from the JSON file
     public Goals readGoals() throws IOException {
         String jsonData = readFile(source);
@@ -48,6 +49,7 @@ public class ReadJason {
         return contentBuilder.toString();
     }
 
+    // MODIFIES: sleepoverall
     //EFFECTS: change sleepoverall to sleepoverall
     private SleepOverall parseSleepOverall(JSONObject jsonObject) {
         SleepOverall sleepOverall = new SleepOverall();
@@ -59,6 +61,7 @@ public class ReadJason {
         return sleepOverall;
     }
 
+    // MODIFIES: goal
     //EFFECTS:change sleep to sleep
     private Sleep parseSleep(JSONObject jsonObject) {
         int time = jsonObject.getInt("sleep_time");
@@ -69,6 +72,7 @@ public class ReadJason {
         return new Sleep(time, date, score, type);
     }
 
+    // MODIFIES: date
     //EFFECTS: change date to date
     private Date parseDate(JSONObject jsonObject) {
         int year = jsonObject.getInt("year");
@@ -78,7 +82,8 @@ public class ReadJason {
         return new Date(year, month, day);
     }
 
-    //change goal to goal
+    // MODIFIES: goal
+    //EFFECTS: change goal to goal
     private Goals parseGoals(JSONObject jsonObject) {
         int timeGoal = jsonObject.getInt("goal_time");
         int scoreGoal = jsonObject.getInt("goal_score");

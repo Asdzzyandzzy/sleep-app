@@ -27,6 +27,7 @@ public class Goals implements Alljasons {
         return this.score;
     }
 
+    // EFFECTS: return goal in Json form
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

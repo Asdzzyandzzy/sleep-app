@@ -44,6 +44,7 @@ public class Date implements Alljasons {
         return this.day;
     }
 
+    // EFFECTS: return date in Json form
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

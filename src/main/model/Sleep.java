@@ -55,6 +55,7 @@ public class Sleep implements Alljasons {
     }
 
 
+    // EFFECTS: return sleep in Json form
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -102,6 +102,7 @@ public class SleepOverall implements Alljasons {
         return aft;
     }
 
+    // EFFECTS: return sleepoverall in Json form
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

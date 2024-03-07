@@ -26,6 +26,8 @@ class SleepTest {
     void testReachGoals() {
         assertFalse(sleep.reachGoal(goals));
         assertTrue(sleep.reachGoal(new Goals(7, 80)));
+        assertFalse(sleep.reachGoal(new Goals(10, 80)));
+        assertFalse(sleep.reachGoal(new Goals(7, 100)));
     }
 
     @Test

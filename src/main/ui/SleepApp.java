@@ -6,6 +6,7 @@ import persistence.WriteJason;
 
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -26,7 +27,7 @@ public class SleepApp {
     //EFFECTS: run the sleep app;
     public SleepApp() throws FileNotFoundException {
         jsonWriter = new WriteJason(jasonPath);
-     //   jsonReader = new ReadJason(jasonPath);
+        jsonReader = new ReadJason(jasonPath);
         runSleep();
     }
 
@@ -76,6 +77,7 @@ public class SleepApp {
         System.out.println("See the categorize summarize: press c");
         System.out.println("Clear all the data and restart: press R");
         System.out.println("save current data: press save");
+        System.out.println("Reload the data: press load");
         System.out.println("Quit: press q");
         System.out.println("Type:");
     }
@@ -302,6 +304,9 @@ public class SleepApp {
         if (s.equals("save")) {
             savefiles();
         }
+        if (s.equals("load")) {
+            loadfiles();
+        }
     }
 
     //EFFECTS: read reader type to ready to choose things
@@ -338,5 +343,19 @@ public class SleepApp {
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + jasonPath);
         }
+        toContinue();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadfiles() {
+        try {
+            sleepOverall = jsonReader.readSleepOverall();
+            goal = jsonReader.readGoals();
+            System.out.println("Loaded " + "file" + " from " + jasonPath);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + jasonPath);
+        }
+        toContinue();
     }
 }

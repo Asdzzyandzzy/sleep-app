@@ -1,0 +1,38 @@
+{
+    "sleepOverall": {"sleeps": [
+        {
+            "sleep_score": 100,
+            "sleep_date": {
+                "month": 3,
+                "year": 2024,
+                "day": 1
+            },
+            "sleep_type": "overnight Sleep",
+            "sleep_time": 10
+        },
+        {
+            "sleep_score": 50,
+            "sleep_date": {
+                "month": 3,
+                "year": 2024,
+                "day": 2
+            },
+            "sleep_type": "Afternoon Sleep",
+            "sleep_time": 2
+        },
+        {
+            "sleep_score": 90,
+            "sleep_date": {
+                "month": 3,
+                "year": 2024,
+                "day": 2
+            },
+            "sleep_type": "Nap",
+            "sleep_time": 3
+        }
+    ]},
+    "goals": {
+        "goal_time": 10,
+        "goal_score": 80
+    }
+}

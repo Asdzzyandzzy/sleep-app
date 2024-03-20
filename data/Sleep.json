@@ -1,0 +1,28 @@
+{
+    "sleepOverall": {"sleeps": [
+        {
+            "sleep_score": 12,
+            "sleep_date": {
+                "month": 12,
+                "year": 10000,
+                "day": 12
+            },
+            "sleep_type": "Nap",
+            "sleep_time": 12
+        },
+        {
+            "sleep_score": 13,
+            "sleep_date": {
+                "month": 1313,
+                "year": 1313131,
+                "day": 13
+            },
+            "sleep_type": "Afternoon Sleep",
+            "sleep_time": 10
+        }
+    ]},
+    "goals": {
+        "goal_time": 10,
+        "goal_score": 10
+    }
+}

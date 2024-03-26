@@ -5,19 +5,24 @@ import persistence.ReadJason;
 import persistence.WriteJason;
 
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.awt.event.ActionListener;
 
-public class SleepApp {
+public class SleepApp extends Printer {
 
     //Jason files
     private static final String jasonPath = "./data/Sleep.json";
     private WriteJason jsonWriter;
     private ReadJason jsonReader;
 
-
+    private Printer print;
 
     private SleepOverall sleepOverall;
     private Goals goal;
@@ -26,23 +31,35 @@ public class SleepApp {
 
     //EFFECTS: run the sleep app;
     public SleepApp() throws FileNotFoundException {
+        super();
+
+
         jsonWriter = new WriteJason(jasonPath);
         jsonReader = new ReadJason(jasonPath);
         runSleep();
     }
 
+
+
+
+
     //MODIFIES: this
     //EFFECTS: progress the user input.
     private void runSleep() {
+
         startSet();
+
         welcomeWord();
 
-        while (keepGoing) {
-            showScreen();
-            chooseThing();
+       // while (keepGoing) {
+        Showscreen showscreen;
+        showscreen = new Showscreen();
 
-        }
+      //  }
     }
+
+
+
 
     //MODIFIES: this
     private void startSet() {
@@ -53,128 +70,43 @@ public class SleepApp {
     //MODIFIES: this
     //EFFECTS: print the welcome sentence; user can use q to quit
     private void welcomeWord() {
-        String s;
-        System.out.println("Welcome to sleep app");
-        System.out.println("press any button to start app");
-        System.out.println("press q to quit the app");
-        System.out.println("Please type:");
-        input = new Scanner(System.in);
-        s = input.next();
-        if (s.equals("q")) {
+
+        Object[] options = {"Start", "Quit"};
+        int choice = JOptionPane.showOptionDialog(null,
+                "Welcome to the sleep app.\nPress Start to begin or Quit to exit.",
+                "Welcome",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+
+        // 处理用户的选择
+        if (choice == JOptionPane.NO_OPTION) {
             keepGoing = false;
-            System.out.println("You quit.");
+            JOptionPane.showMessageDialog(null, "You chose to quit.", "Exiting", JOptionPane.INFORMATION_MESSAGE);
+            // 这里可以放置退出程序的代码，例如 System.exit(0);
+            System.exit(0);
+        } else {
+            // 这里可以继续程序的其他部分
+            JOptionPane.showMessageDialog(null, "Starting the app...", "Start", JOptionPane.INFORMATION_MESSAGE);
+            // 启动应用程序的其他部分
         }
+
+
+
+
     }
 
-    //EFFECTS: show the basic screen
-    private void showScreen() {
-        System.out.println("___________________________________________________________");
-        System.out.println("Record sleep: press r");
-        System.out.println("See all the sleep: all");
-        System.out.println("See the stat: press s");
-        System.out.println("Set Goal: press g");
-        System.out.println("See the Goal: press t");
-        System.out.println("See the categorize summarize: press c");
-        System.out.println("Clear all the data and restart: press R");
-        System.out.println("save current data: press save");
-        System.out.println("Reload the data: press load");
-        System.out.println("Quit: press q");
-        System.out.println("Type:");
-    }
 
-    //EFFECTS: run method to record a sleep
-    private void record() {
-        int t;
-        Date d;
-        int score;
-        String type;
 
-        System.out.println("_________________________________________________");
-
-        t = typeTime();
-        score = typeScore();
-        d = createDate();
-        type = chooseType();
-        sleepOverall.addSleep(new Sleep(t,d,score,type));
+    public void record() {
+        Recordsleep r;
+        r = new Recordsleep();
+        sleepOverall.addSleep(r.recordd());
         System.out.println("Record successfully!!");
-        toContinue();
     }
 
-    //EFFECTS: create a time for sleep
-    private int typeTime() {
-        int t;
-
-        System.out.println("Type how long you sleep (0-24):");
-        input = new Scanner(System.in);
-        t = input.nextInt();
-        if ((t < 0) || (t > 24)) {
-            System.out.println("what are you typing???");
-            System.out.println("Set Hour to 8 automatic");
-            t = 8;
-        }
-        return t;
-    }
-
-    //EFFECTS: create a score for sleep
-    private int typeScore() {
-        int score;
-
-        System.out.println("Type the score of your sleep (0-100):");
-        input = new Scanner(System.in);
-
-        score = input.nextInt();
-        if ((score < 0) || (score > 100)) {
-            System.out.println("what are you typing???");
-            System.out.println("Set score to 50 automatic");
-            score = 50;
-        }
-
-        return score;
-    }
-
-    //EFFECTS: create a type for sleep
-    private String chooseType() {
-        String s;
-        System.out.println("choose Type of your sleep:");
-        System.out.println("press n to choose Nao;");
-        System.out.println("press o to choose overnight Sleep;");
-        System.out.println("press a to choose Afternoon Sleep;");
-        System.out.print("Type:");
-        input = new Scanner(System.in);
-        s = input.next();
-        if (s.equals("n")) {
-            return "Nap";
-        }
-        if (s.equals("o")) {
-            return "overnight Sleep";
-        }
-        if (s.equals("a")) {
-            return "Afternoon Sleep";
-        }
-
-        System.out.println("what are you typing???");
-        System.out.println("Set type to overnight Sleep automatic");
-        return "overnight Sleep";
-    }
-
-    //EFFECTS: create a date for sleep
-    private Date createDate() {
-        int y;
-        int m;
-        int d;
-
-        System.out.println("Type the data of the sleep:");
-        System.out.println("year(1000-9999):");
-        input = new Scanner(System.in);
-        y = input.nextInt();
-        System.out.println("month(1 - 12):");
-        input = new Scanner(System.in);
-        m = input.nextInt();
-        System.out.println("date(0-31):");
-        input = new Scanner(System.in);
-        d = input.nextInt();
-        return new Date(y,m,d);
-    }
 
     //EFFECTS: show a list of all the sleep
     private void seeAll() {
@@ -270,61 +202,7 @@ public class SleepApp {
         runSleep();
     }
 
-    //EFFECTS: to check user type in and run right method
-    private void chooseThings(String s) {
 
-        if (s.equals("r")) {
-            record();
-        }
-
-        if (s.equals("all")) {
-            seeAll();
-        }
-
-        if (s.equals("s")) {
-            stat();
-        }
-
-        if (s.equals("g")) {
-            goal();
-        }
-
-        if (s.equals("t")) {
-            seeGoal();
-        }
-
-        if (s.equals("c")) {
-            categorize();
-        }
-
-        if (s.equals("R")) {
-            restart();
-        }
-
-    }
-
-    //EFFECTS: choose things
-    private void chooseThingss(String s) {
-        if (s.equals("save")) {
-            savefiles();
-        }
-        if (s.equals("load")) {
-            loadfiles();
-        }
-    }
-
-    //EFFECTS: read reader type to ready to choose things
-    private void chooseThing() {
-        String s;
-        input = new Scanner(System.in);
-        s = input.next();
-        chooseThings(s);
-        chooseThingss(s);
-        if (s.equals("q")) {
-            keepGoing = false;
-            System.out.println("The app is quit!");
-        }
-    }
 
     //EFFECTS: give a time to users that they can read information
     private void toContinue() {
@@ -362,4 +240,9 @@ public class SleepApp {
         }
         toContinue();
     }
+
+
+
+
+
 }

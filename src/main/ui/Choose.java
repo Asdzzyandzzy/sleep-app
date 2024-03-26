@@ -29,7 +29,7 @@ public class Choose {
 
         System.out.println("YESS");
         chooseThings(s);
-     //   chooseThingss(s);
+     ///   chooseThingss(s);
         if (s.equals("q")) {
        //     keepGoing = false;
             System.out.println("The app is quit!");

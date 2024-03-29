@@ -49,8 +49,14 @@ class SleepTest {
     public void testGetDate() {
         Date date = new Date(2024, 2, 18);
         sleep = new Sleep(8, date, 85, "overnight Sleep");
-        assertEquals(sleep.getDate(),date);
+        assertEquals(sleep.getDate(),date.getDatee());
     }
 
+    @Test
+    public void testgetDatee() {
+        Date date = new Date(2024, 2, 18);
+        sleep = new Sleep(8, date, 85, "overnight Sleep");
+        assertEquals(sleep.getDatee(),date);
+    }
 
 }

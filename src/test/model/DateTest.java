@@ -34,4 +34,8 @@ class DateTest {
         assertEquals(18, date.getDay());
     }
 
+    @Test
+    public void testGetDatee() {
+        assertEquals(date.getDatee(), date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
+    }
 }

@@ -1,0 +1,16 @@
+{
+    "sleepOverall": {"sleeps": [{
+        "sleep_score": 12,
+        "sleep_date": {
+            "month": 12,
+            "year": 12,
+            "day": 12
+        },
+        "sleep_type": "overnight Sleep",
+        "sleep_time": 12
+    }]},
+    "goals": {
+        "goal_time": -1,
+        "goal_score": -1
+    }
+}

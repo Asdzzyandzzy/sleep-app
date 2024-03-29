@@ -175,4 +175,12 @@ class SleepOverallTest {
         sleepOverall.addSleep(sleep3);
         assertEquals(2,sleepOverall.getOverNum());
     }
+
+    @Test
+    public void testGitSleep() {
+        sleepOverall.addSleep(sleep1);
+        sleepOverall.addSleep(sleep2);
+        sleepOverall.addSleep(sleep3);
+        assertEquals(sleep1,sleepOverall.getSleep(1));
+    }
 }

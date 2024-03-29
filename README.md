@@ -2,7 +2,7 @@
 
 ## What will the application do?
 >The application is designed to help users track and manage their **sleep goals**. Users can log their sleeps, set 
-sleep targets, and view statistics regarding sleep [json-20210307.jar](..%2F..%2F..%2F..%2FDownloads%2Fjson-20210307.jar)patterns and trends.
+sleep targets, and view statistics regarding sleep patterns and trends.
 
 ## Who will use it?
 >Anyone looking to improve *sleep quality* and set *sleep goals* can use this application. This includes individuals 
@@ -23,3 +23,13 @@ understand and improve their sleep.
 - As a user, I want to clear all the data and restart the app
 - As a user, I want to be able to save all my sleep and goals (if we choose).
 - As a user, I want to be able to reload files (if we choose).
+- 
+# Instructions for Grader
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by Record a new sleep
+and adding it to the sleep list, and then can see the sleep list. (click the record button) (click the see all sleep)
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by summarize the
+stats of the sleeps and catogrize them in the sleep list. (click the stats button) (click the categorize summary button)
+- You can locate my visual component by (lock at the east of the app, there is a dog for the logo of the app)
+- You can save the state of my application by (click the save button)
+- You can reload the state of my application by (click the load button)

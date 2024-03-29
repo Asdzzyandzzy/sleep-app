@@ -6,8 +6,9 @@ import persistence.WriteJason;
 
 import java.util.ArrayList;
 
+// a single sleep with a time, date, satisfied score and type.
 public class Sleep implements Alljasons {
-    // a single sleep with a time, date, satisfied score and type.
+
 
     private int time;
     private Date date;
@@ -25,16 +26,20 @@ public class Sleep implements Alljasons {
         this.type = type;
     }
 
+    //EFFECTS: return the Date of the sleep
+    public String getDate() {
+        return this.date.getDatee();
+    }
+
+    public Date getDatee() {
+        return this.date;
+    }
 
     //EFFECTS: return time of sleep
     public int getTime() {
         return this.time;
     }
 
-    //EFFECTS: return the Date of the sleep
-    public Date getDate() {
-        return this.date;
-    }
 
     //EFFECTS: return the Score of the sleep
     public int getScore() {

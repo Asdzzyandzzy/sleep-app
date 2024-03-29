@@ -2,8 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+// a list of weekly sleep with stat.(average)
 public class Average {
-    // a list of weekly sleep with stat.(average)
+
 
     private ArrayList<Sleep> averageList;
 

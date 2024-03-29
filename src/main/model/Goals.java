@@ -3,8 +3,9 @@ package model;
 import org.json.JSONObject;
 import persistence.Alljasons;
 
+//the Goals of the sleep
 public class Goals implements Alljasons {
-    //the Goals of the sleep
+
 
     private int time;
     private int score;

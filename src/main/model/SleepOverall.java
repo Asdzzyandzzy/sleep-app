@@ -4,11 +4,13 @@ import persistence.Alljasons;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
+import ui.SleepApp;
 
 import java.util.ArrayList;
 
+//the list of Sleeps
 public class SleepOverall implements Alljasons {
-    //the list of Sleeps
+
 
     private ArrayList<Sleep> sleepList;
 
@@ -100,6 +102,10 @@ public class SleepOverall implements Alljasons {
             }
         }
         return aft;
+    }
+
+    public Sleep getSleep(int i) {
+        return sleepList.get(i);
     }
 
     // EFFECTS: return sleepoverall in Json form

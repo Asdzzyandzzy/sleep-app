@@ -8,8 +8,9 @@ import org.json.JSONObject;
 import persistence.Alljasons;
 import persistence.WriteJason;
 
+// The date of the sleep
 public class Date implements Alljasons {
-    // The date of the sleep
+
 
     private int year;
     private int month;
@@ -42,6 +43,10 @@ public class Date implements Alljasons {
     //EFFECTS: get day
     public int getDay() {
         return this.day;
+    }
+
+    public String getDatee() {
+        return this.year + "/" + this.month + "/" + this.day;
     }
 
     // EFFECTS: return date in Json form

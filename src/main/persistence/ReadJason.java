@@ -27,6 +27,7 @@ public class ReadJason {
     public SleepOverall readSleepOverall() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        EventLog.getInstance().logEvent(new Event("load files"));
         return parseSleepOverall(jsonObject.getJSONObject("sleepOverall"));
     }
 

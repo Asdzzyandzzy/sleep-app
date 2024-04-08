@@ -1,20 +1,25 @@
 package ui;
 
 import model.*;
+import model.Event;
+import model.exception.LogException;
 import persistence.ReadJason;
 import persistence.WriteJason;
+import model.EventLog;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
+import java.awt.event.WindowAdapter;
 
 
 //The class for running the sleepappGUI
-public class SleepAppGUI {
+public class SleepAppGUI implements LogPrinter {
 
 
     private static final String jsonPath = "./data/Sleep.json";
@@ -43,11 +48,12 @@ public class SleepAppGUI {
     private JButton saveButton;
     private JButton loadButton;
     private JButton quitButton;
+    private JButton logButton;
+
 
     //MODIFIES: this
     // EFFECTS: runs the sleep app
     public SleepAppGUI() throws FileNotFoundException {
-
         startSeting();
         initiallizegraphic();
     }
@@ -110,11 +116,38 @@ public class SleepAppGUI {
 
         frame.add(mainPanel);
 
+
+        windowcheck();
+
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
+    //EFFECTS: show log when windows is closed
+    public void windowcheck() {
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                LogPrinter lp;
+                try {
+                    lp = new LogPrinter() {
+                        @Override
+                        public void printLog(EventLog el) throws LogException {
+                            String ss = "";
+                            for (Event next : el) {
+                                ss = ss + next.toString() + "\n";
+                            }
+                            System.out.println(ss);
+                        }
+                    };
+                    lp.printLog(EventLog.getInstance());
+                } catch (LogException ee) {
+                    System.out.println("Wrong");
+                }
+            }
+        });
+    }
 
     //MODIFIES: this
     //EFFECT: Sit the buttions
@@ -128,7 +161,10 @@ public class SleepAppGUI {
         clearButton = new JButton("Clear All Data");
         saveButton = new JButton("Save Data");
         loadButton = new JButton("Load Data");
+        logButton = new JButton("See log");
         quitButton = new JButton("Quit");
+
+
     }
 
 
@@ -147,6 +183,7 @@ public class SleepAppGUI {
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
         buttonPanel.add(quitButton);
+        buttonPanel.add(logButton);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
@@ -164,6 +201,7 @@ public class SleepAppGUI {
         saveButton.addActionListener(e -> savefiles());
         loadButton.addActionListener(e -> loadfiles());
         quitButton.addActionListener(e -> quitApp());
+        logButton.addActionListener(e -> logthing());
     }
 
     // EFFECTS: record the sleep
@@ -212,6 +250,22 @@ public class SleepAppGUI {
 
     // EFFECTS: quit
     private void quitApp() {
+        LogPrinter lp;
+        try {
+            lp = new LogPrinter() {
+                @Override
+                public void printLog(EventLog el) throws LogException {
+                    String ss = "";
+                    for (Event next : el) {
+                        ss = ss + next.toString() + "\n";
+                    }
+                    System.out.println(ss);
+                }
+            };
+            lp.printLog(EventLog.getInstance());
+        } catch (LogException e) {
+            System.out.println("Wrong");
+        }
         System.exit(0);
     }
 
@@ -219,6 +273,7 @@ public class SleepAppGUI {
     //EFFECTS: see the sleep list
     private void seeAll() {
         String s = "";
+        sleepOverall.tryseeALL();
         int num = sleepOverall.getNumber();
         s = s + "You have " + num + " sleep records:\n";
 
@@ -244,6 +299,7 @@ public class SleepAppGUI {
 
     //EFFECTS: see the stats
     private void stat() {
+        sleepOverall.tryseeall();
         String ss = "Average hours (last 7 sleeps): " + sleepOverall.getLastSeven().calculateTime()
                 + "\nAverage score (last 7 sleeps): " + sleepOverall.getLastSeven().calculateScore();
         String ms = "Average hours (last month): " + sleepOverall.getLastMonth().calculateTime()
@@ -254,6 +310,7 @@ public class SleepAppGUI {
     //MODIFIES: this
     //EFFECTS: set the goal
     private void setGoal() {
+        goal.trysetGoals();
 
         String s = JOptionPane.showInputDialog(frame, "Hours for goal (0-24):");
         String ss = JOptionPane.showInputDialog(frame, "score for goal (0-100):");
@@ -269,6 +326,7 @@ public class SleepAppGUI {
 
     //EFFECtS: see the goals
     private void seeGoal() {
+        goal.tryseeGoals();
         if ((goal.getScore() < 0) || (goal.getTime() < 0)) {
             textArea.setText("No goals");
         } else {
@@ -383,6 +441,37 @@ public class SleepAppGUI {
             }
         });
     }
+
+
+    public void logthing() {
+        LogPrinter lp;
+        try {
+            lp = new LogPrinter() {
+                @Override
+                public void printLog(EventLog el) throws LogException {
+                    String ss = "";
+                    for (Event next : el) {
+                        ss = ss + next.toString() + "\n";
+                    }
+                    textArea.setText(ss);
+                }
+            };
+            lp.printLog(EventLog.getInstance());
+        } catch (LogException e) {
+            System.out.println("d");
+        }
+    }
+
+    @Override
+    public void printLog(EventLog el) throws LogException {
+        String ss = "";
+        for (Event next : el) {
+            ss = ss + next.toString() + "\n";
+        }
+        textArea.setText(ss);
+    }
+
+
 
 }
 

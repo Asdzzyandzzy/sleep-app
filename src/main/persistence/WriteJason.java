@@ -1,5 +1,7 @@
 package persistence;
 
+import model.Event;
+import model.EventLog;
 import model.Goals;
 import model.SleepOverall;
 
@@ -26,6 +28,7 @@ public class WriteJason {
     // be opened for writing
     public void open() throws FileNotFoundException {
         writer = new PrintWriter(new File(destination));
+        EventLog.getInstance().logEvent(new Event("save files"));
     }
 
     // MODIFIES: this

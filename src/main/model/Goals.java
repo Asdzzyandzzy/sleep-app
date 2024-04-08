@@ -18,6 +18,16 @@ public class Goals implements Alljasons {
         this.score = score;
     }
 
+    //EFFECTS: avoid save log duplicated
+    public void trysetGoals() {
+        EventLog.getInstance().logEvent(new Event("set a goal"));
+    }
+
+    //EFFECTS: avoid save log duplicated
+    public void tryseeGoals() {
+        EventLog.getInstance().logEvent(new Event("see a goal"));
+    }
+
     //EFFECTS: return time
     public int getTime() {
         return this.time;

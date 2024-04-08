@@ -18,12 +18,14 @@ public class SleepOverall implements Alljasons {
     //EFFECTS: create an overall sleep list
     public SleepOverall() {
         this.sleepList = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("Start/Restart the app"));
     }
 
     //MODIFIES: this
     //EFFECTS add a sleep
     public void addSleep(Sleep sleep) {
         this.sleepList.add(sleep);
+        EventLog.getInstance().logEvent(new Event("Record a sleep"));
     }
 
     //MODIFIES: this
@@ -35,6 +37,11 @@ public class SleepOverall implements Alljasons {
     //EFFECTS: return the size of the list
     public int getNumber() {
         return this.sleepList.size();
+    }
+
+    //EFFECTS: avoid save log duplicated
+    public void tryseeALL() {
+        EventLog.getInstance().logEvent(new Event("See all"));
     }
 
     //EFFECTS: return the last seven days of sleep; and if days<7, return whatever we have;
@@ -90,6 +97,7 @@ public class SleepOverall implements Alljasons {
                 over++;
             }
         }
+        EventLog.getInstance().logEvent(new Event("see categorize"));
         return over;
     }
 
@@ -106,6 +114,11 @@ public class SleepOverall implements Alljasons {
 
     public Sleep getSleep(int i) {
         return sleepList.get(i);
+    }
+
+    //EFFECTS: avoid save logs replicate
+    public void tryseeall() {
+        EventLog.getInstance().logEvent(new Event("See stat"));
     }
 
     // EFFECTS: return sleepoverall in Json form

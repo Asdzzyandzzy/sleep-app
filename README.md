@@ -33,3 +33,15 @@ stats of the sleeps and catogrize them in the sleep list. (click the stats butto
 - You can locate my visual component by (lock at the east of the app, there is a dog for the logo of the app)
 - You can save the state of my application by (click the save button)
 - You can reload the state of my application by (click the load button)
+
+# Phase 4: Task 2
+It can do following events:
+- Start/Restart the app
+- Record a sleep
+- See all
+- See stat
+- set a goal
+- see a goal
+- see categorize
+- save files
+- load files

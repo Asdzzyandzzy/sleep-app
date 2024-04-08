@@ -107,9 +107,7 @@ public class SleepAppGUI implements LogPrinter {
 
         inputField = new JTextField(20);
 
-        button();
-
-        addButton();
+        buttons();
 
         strangeAction();
 
@@ -122,6 +120,13 @@ public class SleepAppGUI implements LogPrinter {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    //EFFECT: Create Buttons and create active listner
+    public void buttons() {
+        button();
+
+        addButton();
     }
 
     //EFFECTS: show log when windows is closed

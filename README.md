@@ -45,3 +45,8 @@ It can do following events:
 - see categorize
 - save files
 - load files
+
+# Phase 4: Task 3
+After creating the UML of the app, I found that the Average Class is almost useless which can be deleted if I have more
+time. And then I notice that the SleepApp and SleepAppGUI have too much method and function in one class which can be 
+split in many different small classes. If I have more time I will change that.
